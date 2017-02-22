@@ -26,7 +26,7 @@ angular.module('HHF', [])
         $scope.menus = {
             "current": "index",
             "MenuItems": [{
-                "active": false,
+                "active": true,
                 "text": "LMx",
                 "subItem":[
                     {
