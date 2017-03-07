@@ -15,10 +15,13 @@ public class db_connect {
 	 // JDBC driver name and database URL
 	   String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
 	   String DB_URL = "jdbc:mysql://localhost/lm-notf";
-
-	   // Database credentials
 	   String USER = "root";
 	   String PASS = "";
+	     /*String DB_URL = "jdbc:mysql://clipdb-karsha.umiacs.umd.edu:3306/Karsha_CEP";
+	     String USER = "karsha";
+		 String PASS = "em$.N0w";*/
+	   // Database credentials
+	   
 	   JSONArray jsonArray = new JSONArray();
 	   public JSONArray db_con(String table) {
 		   java.sql.Connection conn = null;
@@ -28,15 +31,16 @@ public class db_connect {
 		      Class.forName("com.mysql.jdbc.Driver");
 
 		      //STEP 3: Open a connection
-		      System.out.println("Connecting to database...");
+		      //System.out.println("Connecting to database...");
 		      conn = DriverManager.getConnection(DB_URL,USER,PASS);
 
 		      //STEP 4: Execute a query
-		      System.out.println("Creating statement...");
+		      //System.out.println("Creating statement...");
 		      stmt = conn.createStatement();
 		      String sql;
 		      sql = "SELECT * from "+table+" where not value = 0;";
 		      ResultSet rs = stmt.executeQuery(sql);
+		      System.out.println(sql);
 		      
 		      
 		      //STEP 5: Extract data from result set
@@ -75,7 +79,7 @@ public class db_connect {
 		         se.printStackTrace();
 		      }//end finally try
 		   }//end try
-		   System.out.println("Goodbye!");
+		  // System.out.println("Goodbye!");
 		   
 		   return jsonArray;
 		   
